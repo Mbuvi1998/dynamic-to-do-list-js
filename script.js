@@ -49,4 +49,8 @@ document.addEventListener('DOMContentLoaded', function () {
             addTask();
         }
     });
+
+    // Optionally, invoke addTask on DOMContentLoaded if required
+    // This is not necessary in this context but can be used if initial task setup is needed
 });
+
