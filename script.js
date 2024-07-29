@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Select DOM Elements
-    const addButton = document.getElementById('Add Task');
+    const addButton = document.getElementById('add-task-btn');
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
 
@@ -53,4 +53,21 @@ document.addEventListener('DOMContentLoaded', function () {
     // Optionally, invoke addTask on DOMContentLoaded if required
     // This is not necessary in this context but can be used if initial task setup is needed
 });
+//Implementation of Local Storage for the To-Do List
 
+function loadTask() {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+    storedTasks.forEach(taskText => addTask(taskText, false));
+}
+
+function addTask(taskText, save = true) {
+    if (save) {
+        const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+        storedTasks.push(taskText);
+        localStorage.setItem('tasks', JSON.stringify(storedTasks));
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadTask();
+});
